@@ -1,0 +1,24 @@
+{
+  "sites": [
+    {
+      "key": "电影天堂",
+      "name": "影视 | 电影天堂",
+      "type": 1,
+      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1,
+      "playerType": 2
+    }
+  ],
+  "lives": [
+    {
+      "name": "我的TVList·227台",
+      "type": 0,
+      "url": "https://gzeric2k.github.io/tvlist-ec/t.m3u",
+      "playerType": 1,
+      "epg": "https://gzeric2k.github.io/tvlist-ec/e.xml"
+    }
+  ]
+}
