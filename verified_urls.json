@@ -453,6 +453,46 @@
    "old": "http://39.165.39.49:85/tsfile/live/1011_1.m3u8?key=txiptv&playlive=1&authid=0",
    "new": "http://38.75.136.137:98/gslb/dsdqbv/cctv11hd.m3u8?auth=test20251009",
    "old_verdict": "DEAD_DECODE"
+  },
+  {
+   "idx": 121,
+   "name": "CCTV-2",
+   "group": "央视频道",
+   "key": "CCTV2",
+   "old": "https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8",
+   "new": "http://74.91.26.218:82/live/cctv2hd.m3u8",
+   "old_verdict": "DEAD_DECODE",
+   "note": "上游把 CCTV-1 的死 URL 分给了 CCTV-2；URL 键控会误换成 CCTV-1 的流，靠名字回退 + gen 的名字校验修复 (2026-11-22)"
+  },
+  {
+   "idx": 122,
+   "name": "Cricket Gold",
+   "group": "Sports",
+   "key": "CricketGold",
+   "old": "https://i.mjh.nz/.r/cricketgold-fast.m3u8",
+   "new": "https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8",
+   "old_verdict": "ROTATED_UNVERIFIED",
+   "note": "i.mjh.nz 跳转到带会话 token 的 7plus 流，未进白名单；钉回已验证的 sofast 源 (2026-11-22)"
+  },
+  {
+   "idx": 123,
+   "name": "山东卫视",
+   "group": "卫视频道",
+   "key": "山东卫视",
+   "old": "http://60.187.246.195:9901/tsfile/live/0131_1.m3u8?key=txiptv&playlive=1&authid=0",
+   "new": "http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8",
+   "old_verdict": "ROTATED_UNVERIFIED",
+   "note": "上游改推 1080p txiptv IP 源（实测可播，但 IP 源会轮换）；钉回已验证的 cztvcloud 720p 源 (2026-11-22)"
+  },
+  {
+   "idx": 124,
+   "name": "江苏卫视",
+   "group": "卫视频道",
+   "key": "江苏卫视",
+   "old": "http://173.208.212.130:8181/720p/jsws.m3u8",
+   "new": "http://221.7.175.154:8445/tsfile/live/0127_1.m3u8?key=txiptv&playlive=1&authid=0",
+   "old_verdict": "ROTATED_UNVERIFIED",
+   "note": "上游改推 173.208 IP 源（302 跳转）；钉回已验证的 221.7 txiptv 源 (2026-11-22)"
   }
  ],
  "isolated_count": 221,

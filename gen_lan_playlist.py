@@ -133,6 +133,10 @@ def load_verified():
     return {
         "set": set(d["verified_urls"]),
         "swaps": {r["old"]: r["new"] for r in d.get("repairs", [])},
+        # 同一个死 URL 可能先后分给不同频道（Baidu merged URL 先是 CCTV-1 的
+        # 死源，2026-11-22 又成了 CCTV-2 的源）。URL 键控 swap 必须按频道名
+        # 校验，否则会把 CCTV-2 换成 CCTV-1 的流、再因去重丢掉。
+        "swap_names": {r["old"]: r.get("name") for r in d.get("repairs", [])},
         # 频道名回退：上游每次刷新都会换 URL，只按 old-URL 键控会让整个 CCTV
         # 频道被静默丢出列表（2026-11-15 丢过 6 个）。名字命中且 URL 不在白名单时回退。
         "swaps_by_name": {r["name"]: r["new"] for r in d.get("repairs", [])
@@ -166,8 +170,13 @@ def main():
         if v:
             # 之前审计判定为死的 CCTV 源 -> 换成已验证可播的备用源
             if url in v["swaps"]:
-                url = v["swaps"][url]
-                swapped += 1
+                rname = v["swap_names"].get(url)
+                if not rname or display_name(e["extinf"]) == rname:
+                    url = v["swaps"][url]
+                    swapped += 1
+                elif url not in v["set"] and display_name(e["extinf"]) in v["swaps_by_name"]:
+                    url = v["swaps_by_name"][display_name(e["extinf"])]
+                    swapped += 1
             elif url not in v["set"] and display_name(e["extinf"]) in v["swaps_by_name"]:
                 url = v["swaps_by_name"][display_name(e["extinf"])]
                 swapped += 1

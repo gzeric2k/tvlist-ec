@@ -29,8 +29,7 @@ from collections import defaultdict
 from datetime import date, datetime
 
 # Windows encoding fix
-if sys.platform == "win32":
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')  # all platforms: never crash on a print
 
 # ── Paths ─────────────────────────────────────────────────────
 WORKSPACE = os.path.dirname(os.path.abspath(__file__))
@@ -241,7 +240,7 @@ def merge_epg_files():
     output_path = os.path.join(WORKSPACE, "e.xml")
     tree = ET.ElementTree(merged)
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
-    print(f"  \ud83d\udcca Merged EPG: {ch_count} channels, {prog_count} programmes ({os.path.getsize(output_path)//1024//1024}MB)")
+    print(f"  📊 Merged EPG: {ch_count} channels, {prog_count} programmes ({os.path.getsize(output_path)//1024//1024}MB)")
 
 
 def load_cached_epg():
