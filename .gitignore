@@ -1,0 +1,9 @@
+# generated outputs (rebuilt by the workflow; published to Pages, not committed)
+t.m3u
+e.xml
+tvlist-latest.m3u8
+t-unverified.m3u
+.epg_cache/
+public/
+__pycache__/
+.env

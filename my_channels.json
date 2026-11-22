@@ -1,0 +1,90 @@
+{
+  "description": "个性化频道配置 - 编辑此文件指定你想看的频道",
+  "last_updated": "2026-05-31",
+  "output_filename": "tvlist",
+
+  "epg": {
+    "sources": [
+      {
+        "name": "zsdc",
+        "url": "https://epg.zsdc.eu.org/t.xml.gz",
+        "info": "134 Chinese channels (CCTV, 卫视, 数字付费等)",
+        "type": "gzip"
+      },
+      {
+        "name": "au",
+        "url": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/refs/heads/master/au/Sydney/epg.xml",
+        "info": "181 Australian channels (i.mjh.nz Sydney EPG)",
+        "type": "xml"
+      }
+    ],
+    "enabled": true,
+    "ttl_hours": 24,
+    "comment": "启用后自动下载 EPG 数据并合并为 epg_merged.xml，在 M3U8 中加入 url-tvg 和 tvg-id"
+  },
+
+  "categories": {
+    "CCTV": {
+      "enabled": true,
+      "comment": "央视系列，默认全选"
+    },
+    "卫视": {
+      "enabled": true,
+      "exclude": [
+        "兵团卫视", "延边卫视", "西藏卫视", "新疆卫视", "青海卫视",
+        "陕西卫视", "甘肃卫视", "宁夏卫视", "内蒙古卫视"
+      ],
+      "comment": "卫视频道，排除不常看的边远卫视"
+    },
+    "凤凰卫视": {
+      "enabled": true,
+      "comment": "凤凰中文/资讯/香港"
+    },
+    "AU TV": {
+      "enabled": true,
+      "custom_include": [
+        "ABC NEWS", "BBC News", "Al Jazeera", "Seven",
+        "Channel 9", "10", "SBS", "Bloomberg TV",
+        "Sky News Now", "60 Minutes Australia"
+      ],
+      "comment": "澳洲本地频道，默认关闭，仅保留部分新闻/主台"
+    },
+    "Sports": {
+      "enabled": true,
+      "custom_include": [
+        "CCTV-5", "CCTV-5+", "CCTV-16", "ESPN8 The Ocho",
+        "Red Bull TV", "PGA Tour", "World Poker Tour",
+        "F1 Channel", "TSN1", "TSN2", "TSN3", "TSN4", "TSN5",
+        "NFL RedZone", "Golf Channel", "Tennis Channel",
+        "beIN SPORTS Xtra", "Star Sports 1 HD"
+      ],
+      "comment": "体育频道，默认关闭，仅保留感兴趣的"
+    },
+    "Financial News": {
+      "enabled": true,
+      "exclude": [
+        "ABC News Live 1", "ABC News Live 2", "ABC News Live 3",
+        "ABC News Live 4", "ABC News Live 5", "ABC News Live 6",
+        "ABC News Live 7", "ABC News Live 8", "ABC News Live 9",
+        "ABC News Live 10", "Bloomberg TV+ (2160p)", "Bloomberg TV Australia (270p)",
+        "Bloomberg TV Asia Live Event (720p)", "Bloomberg TV EMEA Live Event (720p)",
+        "Bloomberg TV US Live Event (720p)", "Bloomberg TV US Politics Live Event (720p)",
+        "Sky News Extra 1 (540p)", "Sky News Extra 2 (540p)",
+        "Fox Business Network (720p) [Not 24/7]"
+      ],
+      "comment": "财经新闻频道，排除重复冗余和非常规频道"
+    },
+    "Tvlist-HKMO": {
+      "enabled": true,
+      "exclude": [
+        "点掌财经", "香港佛陀", "耀才财经", "龙华电影",
+        "龙华经典", "龙华卡通", "龙华偶像", "龙华日韩", "龙华戏剧"
+      ],
+      "comment": "港澳频道，排除部分龙华系列和非必要频道"
+    },
+    "IPTV-ORG": {
+      "enabled": true,
+      "comment": "澳港基本频道（Celestial、RTHK、莲花等）"
+    }
+  }
+}
